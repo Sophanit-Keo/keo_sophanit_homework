@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">App Connect</string>
+    <string name="app_logo">app_logo</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="email_username">Email or Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="log_in">Log In</string>
+    <string name="email_or_username">Email or Username</string>
+    <style name="ShapeAppearance.Circle" parent="">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+</resources>
