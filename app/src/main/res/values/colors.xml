@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Base -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#FF888888</color>
+    <color name="red">#FF0000</color>
+
+    <!-- App colors -->
+    <color name="primary">#59FDDE</color>
+    <color name="secondary">#3EEDED</color>
+
+    <color name="dark_background">#FF000000</color>
+    <color name="light_background">#FF000000</color>
+
+    <!-- Input -->
+    <color name="input_background">#0E1515</color>
+
+    <color name="input_stroke_default">#6B7A7A</color>
+    <color name="input_stroke_focused">#4FD1C5</color>
+
+    <color name="input_hint_default">#9CB3B3</color>
+    <color name="input_hint_focused">#4FD1C5</color>
+
+    <color name="input_icon">#6B7A7A</color>
+
 </resources>
