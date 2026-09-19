@@ -8,5 +8,9 @@
     <string name="forgot_password"><u>Forgot Password?</u> </string>
     <string name="log_in">Log In</string>
     <string name="email_or_username">Email or Username</string>
-
+    <string name="continue_with_github">Continue with GitHub</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="dont_have_account_btn">Don\'t have an account? <font color="#4FD1C5"><b><u>Sign Up</u></b></font></string>
+    <string name="or_log_in_with">Or log in with</string>
 </resources>

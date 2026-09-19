@@ -75,8 +75,8 @@
                 android:layout_marginTop="32dp"
                 android:textColorHint="@color/input_stroke"
                 android:hint="@string/email_or_username"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
 
                 app:startIconDrawable="@drawable/username_24"
                 app:startIconTint="@color/input_icon"
@@ -108,12 +108,13 @@
                 android:layout_marginTop="16dp"
                 android:hint="@string/password"
 
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textColorHint="@color/input_stroke"
                 app:startIconDrawable="@drawable/password_24"
                 app:startIconTint="@color/input_icon"
                 app:endIconMode="password_toggle"
+                app:endIconTint="@color/input_icon"
 
                 app:layout_constraintTop_toBottomOf="@id/emailLayout"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,8 +141,8 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
 
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
 
                 android:layout_marginTop="20dp"
 
@@ -174,6 +175,131 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+            <!-- Login With -->
+            <LinearLayout
+                android:id="@+id/txtLoginWith"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/txtForgotPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:background="#2D3B3B" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="36dp"
+                    android:text="@string/or_log_in_with"
+                    android:textColor="#6B7A7A"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:background="#2D3B3B" />
+
+            </LinearLayout>
+
+
+            <!-- Social Login -->
+            <LinearLayout
+                android:id="@+id/socialLoginContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtLoginWith"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Facebook -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFacebook"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/continue_with_facebook"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:backgroundTint="@color/input_background"
+                    app:cornerRadius="31dp"
+                    app:icon="@drawable/facebook"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconTint="@null"
+                    app:strokeColor="@color/input_stroke_default"
+                    app:strokeWidth="2dp" />
+
+                <!-- Google -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoogle"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/continue_with_google"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:backgroundTint="@color/input_background"
+                    app:cornerRadius="31dp"
+                    app:icon="@drawable/google"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconTint="@null"
+                    app:strokeColor="@color/input_stroke_default"
+                    app:strokeWidth="2dp" />
+
+                <!-- GitHub -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGitHub"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:contentDescription="@string/continue_with_github"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+
+                    app:backgroundTint="@color/input_background"
+                    app:cornerRadius="31dp"
+                    app:icon="@drawable/github"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconTint="@null"
+                    app:strokeColor="@color/input_stroke_default"
+                    app:strokeWidth="2dp" />
+
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignUpFull"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/dont_have_account_btn"
+                android:textAllCaps="false"
+                android:textColor="#8A9999"
+                android:textSize="14sp"
+                app:rippleColor="#204FD1C5"
+                app:layout_constraintTop_toBottomOf="@id/socialLoginContainer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
