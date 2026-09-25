@@ -13,4 +13,10 @@
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="dont_have_account_btn">Don\'t have an account? <font color="#4FD1C5"><b><u>Sign Up</u></b></font></string>
     <string name="or_log_in_with">Or log in with</string>
+    <string name="enter_your_email">email</string>
+    <string name="enter_your_username">username</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="register">Register</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_account_btn">Already have an account? <font color="#4FD1C5"><b><u>Log In</u></b></font></string>
 </resources>
