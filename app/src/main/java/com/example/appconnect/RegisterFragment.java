@@ -4,57 +4,65 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
-import com.example.appconnect.databinding.ActivityRegisterBinding;
+import com.example.appconnect.databinding.FragmentRegisterBinding;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterFragment extends Fragment {
 
-    private ActivityRegisterBinding binding;
+    private FragmentRegisterBinding binding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentRegisterBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
 
-        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(binding.mainRegister, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         binding.registerScreen.setOnClickListener(v -> hideKeyboard());
 
-        // Sign Up button click
+        binding.txtBackToLogin.setOnClickListener(v -> 
+            Navigation.findNavController(v).navigate(R.id.action_register_to_login)
+        );
+
         binding.btnRegister.setOnClickListener(v -> {
-            if(validatePassword()){
-                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            if (validatePassword()) {
+                Toast.makeText(requireContext(), "Account created successfully!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
             }
         });
 
         setupTextWatchers();
     }
-    // Hide keyboard
+
     private void hideKeyboard() {
-        View currentFocused = getCurrentFocus();
-        View view = currentFocused != null ? currentFocused : new View(this);
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (getActivity() == null) return;
+        View currentFocused = getActivity().getCurrentFocus();
+        View targetView = currentFocused != null ? currentFocused : getView();
+        if (targetView != null && getContext() != null) {
+            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(targetView.getWindowToken(), 0);
+            }
         }
     }
-    // Validate button state based on input fields
+
     private void validateButtonState() {
+        if (binding == null) return;
         String username = binding.editUsername.getText() != null ? binding.editUsername.getText().toString().trim() : "";
         String email = binding.editEmail.getText() != null ? binding.editEmail.getText().toString().trim() : "";
         String password = binding.editPassword.getText() != null ? binding.editPassword.getText().toString().trim() : "";
@@ -63,8 +71,9 @@ public class RegisterActivity extends AppCompatActivity {
         boolean allFieldsFilled = !username.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty();
         binding.btnRegister.setEnabled(allFieldsFilled);
     }
-    // Validate password match
+
     private boolean validatePassword() {
+        if (binding == null) return false;
         String password = binding.editPassword.getText() != null ? binding.editPassword.getText().toString().trim() : "";
         String confirmPassword = binding.editConfirmPassword.getText() != null ? binding.editConfirmPassword.getText().toString().trim() : "";
         if (!password.equals(confirmPassword)) {
@@ -73,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return true;
     }
-    // Set up text watchers for input fields
+
     private void setupTextWatchers() {
         TextWatcher watcher = new TextWatcher() {
             @Override
@@ -81,10 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                binding.confirmPasswordLayout.setError(null);
-                validateButtonState();
+                if (binding != null) {
+                    binding.confirmPasswordLayout.setError(null);
+                    validateButtonState();
+                }
             }
-
             @Override
             public void afterTextChanged(Editable s) {}
         };
@@ -93,5 +103,11 @@ public class RegisterActivity extends AppCompatActivity {
         binding.editEmail.addTextChangedListener(watcher);
         binding.editPassword.addTextChangedListener(watcher);
         binding.editConfirmPassword.addTextChangedListener(watcher);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
