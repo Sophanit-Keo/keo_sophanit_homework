@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment {
         );
 
         binding.btnLogin.setOnClickListener(v -> {
-
+            Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_movieRecyclerViewFragment);
         });
 
         binding.txtForgotPassword.setOnClickListener(v -> {
@@ -47,6 +47,7 @@ public class LoginFragment extends Fragment {
         });
 
         addTextInputListener();
+
     }
 
     private void hideKeyboard() {

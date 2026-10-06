@@ -49,6 +49,7 @@ public class RegisterFragment extends Fragment {
         setupTextWatchers();
     }
 
+    // hide keyboard
     private void hideKeyboard() {
         if (getActivity() == null) return;
         View currentFocused = getActivity().getCurrentFocus();
@@ -60,7 +61,7 @@ public class RegisterFragment extends Fragment {
             }
         }
     }
-
+    // validate button state
     private void validateButtonState() {
         if (binding == null) return;
         String username = binding.editUsername.getText() != null ? binding.editUsername.getText().toString().trim() : "";
