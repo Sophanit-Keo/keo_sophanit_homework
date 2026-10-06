@@ -167,6 +167,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvBadge"
         app:layout_constraintTop_toBottomOf="@id/tvDuration"
-        tools:text="Action   |   Movie" />
+        tools:text="Action" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
