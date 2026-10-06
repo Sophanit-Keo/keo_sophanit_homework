@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_movieRecyclerViewFragment"
+            app:destination="@id/movieRecyclerViewFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +26,13 @@
         <action
             android:id="@+id/action_register_to_login"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_movieRecyclerViewFragment"
+            app:destination="@id/movieRecyclerViewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/movieRecyclerViewFragment"
+        android:name="com.example.appconnect.MovieRecyclerViewFragment"
+        android:label="fragment_movie_recycler_view"
+        tools:layout="@layout/fragment_movie_recycler_view" />
 </navigation>
